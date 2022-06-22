@@ -1,9 +1,9 @@
-import Button from "react-bootstrap/Button";
-
+import "./index.css";
+import Header from "./components/Header";
 function App() {
   return (
     <div>
-      <Button variant="primary">Primary</Button>
+      <Header />
     </div>
   );
 }
