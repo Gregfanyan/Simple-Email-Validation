@@ -1,9 +1,8 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import style from "./ChangePassword.module.css";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import FormModal from "../FormModal";
 function ChangePassword({ contentClosehandleClick }) {
   return (
     <main className={style.main}>
@@ -18,7 +17,7 @@ function ChangePassword({ contentClosehandleClick }) {
           <strong>grigorfanyan@gmail.com</strong>
         </p>
       </div>
-      <Button className={style.button}>E-Mail-Adresse Ändern</Button>
+      <FormModal />
       <div>
         <FontAwesomeIcon onClick={contentClosehandleClick} icon={faAngleUp} />
       </div>
