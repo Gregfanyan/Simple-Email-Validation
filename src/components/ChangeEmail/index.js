@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./ChangePassword.module.css";
+import style from "./ChangeEmail.module.css";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FormModal from "../FormModal";

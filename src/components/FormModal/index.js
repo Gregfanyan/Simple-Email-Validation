@@ -5,19 +5,72 @@ import style from "./FormModal.module.css";
 
 function FormModal() {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const changePassword = "E-Mail-Adresse Ändern";
+  const changeEmail = "E-Mail-Adresse Ändern";
+  const [input, setInput] = useState({
+    email: "",
+    confirmEmail: "",
+  });
+
+  const [error, setError] = useState({
+    email: "",
+    confirmEmail: "",
+  });
+
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    validateInput(e);
+  };
+
+  const validateInput = (e) => {
+    let { name, value } = e.target;
+    setError((prev) => {
+      const stateObj = { ...prev, [name]: "" };
+
+      switch (name) {
+        case "email":
+          if (!value) {
+            stateObj[name] = "Please enter Email";
+          } else if (input.confirmEmail && value !== input.confirmEmail) {
+            stateObj["confirmEmail"] =
+              "Email and Confirm Email does not match.";
+          } else {
+            stateObj["confirmEmail"] = input.confirmEmail
+              ? ""
+              : error.confirmEmail;
+          }
+          break;
+
+        case "confirmEmail":
+          if (!value) {
+            stateObj[name] = "Please enter Confirm Email.";
+          } else if (input.email && value !== input.email) {
+            stateObj[name] = "Email and Confirm Email does not match.";
+          }
+          break;
+
+        default:
+          break;
+      }
+
+      return stateObj;
+    });
+  };
+
   return (
     <>
       <Button className={style.button} onClick={handleShow}>
-        {changePassword}
+        {changeEmail}
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{changePassword}</Modal.Title>
+          <Modal.Title>{changeEmail}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           Bitte gib deine neue E-Mail-Adresse zweimal an. Deine alte
@@ -32,34 +85,37 @@ function FormModal() {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Control
                 type="email"
+                name="email"
                 placeholder="Email-Addresse"
                 autoFocus
+                onChange={onInputChange}
+                onBlur={validateInput}
+                value={input.email}
               />
+              {error.email && <span className={style.err}>{error.email}</span>}
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Control
+                onChange={onInputChange}
+                value={input.confirmEmail}
+                onBlur={validateInput}
                 type="email"
+                name="confirmEmail"
                 placeholder="Email-Addresse wiederholen"
-                autoFocus
               />
+              {error.confirmEmail && (
+                <span className={style.err}>{error.confirmEmail}</span>
+              )}
             </Form.Group>
           </Form>
         </Modal.Body>
 
-        <Modal.Footer
-          style={{
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-            color: "#ad325d",
-          }}
-        >
+        <Modal.Footer className={style.footer}>
           <Button
             style={{
               backgroundColor: "#ad325d",
             }}
             variant="primary"
-            onClick={handleClose}
           >
             speichern
           </Button>
