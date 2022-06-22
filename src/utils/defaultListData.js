@@ -1,14 +1,22 @@
 export const defaultListData = [
   {
-    name: "Dapibus ac facilisis in",
+    name: "E-Mail-Benachrichtigungen verwalten",
+    icon: "envelope",
   },
   {
-    name: "Morbi leo risus",
+    name: "E-Mail-Addresse ändern",
+    icon: "at",
   },
   {
-    name: "Porta ac consectetur ac",
+    name: "Passwort ändern",
+    icon: "lock",
   },
   {
-    name: "Porta ac doesfvsaard  asdas",
+    name: "Onlinedarstellung verwalten",
+    icon: "clipboard",
+  },
+  {
+    name: "Benutzerkonto loschen",
+    icon: "delete",
   },
 ];

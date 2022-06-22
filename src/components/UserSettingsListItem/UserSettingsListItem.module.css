@@ -5,3 +5,15 @@
   align-items: center;
   flex-direction: row;
 }
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+  text-align: start;
+}
+
+.iconWrapper svg {
+  color: #007aad;
+}
