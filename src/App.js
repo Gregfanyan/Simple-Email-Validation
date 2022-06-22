@@ -1,9 +1,11 @@
-import Button from "react-bootstrap/Button";
-
+import styles from "./App.module.css";
+import Header from "./components/Header";
+import UserSettings from "./components/UserSettings";
 function App() {
   return (
-    <div>
-      <Button variant="primary">Primary</Button>
+    <div className={styles.container}>
+      <Header />
+      <UserSettings />
     </div>
   );
 }
