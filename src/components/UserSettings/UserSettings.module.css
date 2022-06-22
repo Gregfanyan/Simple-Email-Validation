@@ -3,3 +3,9 @@
   background-color: #fff;
   margin-bottom: 50px;
 }
+
+@media screen and (min-width: 800px) {
+  .userSettingsContainer {
+    border-radius: 0;
+  }
+}
