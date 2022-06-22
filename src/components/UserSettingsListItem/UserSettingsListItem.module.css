@@ -4,16 +4,25 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  cursor: pointer;
+  border-radius: 1px solid red;
 }
 
 .iconWrapper {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  column-gap: 10px;
+  gap: 10px;
   text-align: start;
+  font-size: 14px;
 }
 
 .iconWrapper svg {
   color: #007aad;
+}
+
+@media screen and (min-width: 800px) {
+  .iconWrapper {
+    font-size: 17px;
+  }
 }

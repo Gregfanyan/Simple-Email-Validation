@@ -31,7 +31,9 @@ function UserSettingsListItem({ category }) {
   return (
     <ListGroup.Item className={styles.listItem} onClick={handleClick}>
       <div className={styles.iconWrapper}>
-        <FontAwesomeIcon icon={icon} size="2x" />
+        <div>
+          <FontAwesomeIcon icon={icon} size="2x" />
+        </div>
         {category.name}
       </div>
 
