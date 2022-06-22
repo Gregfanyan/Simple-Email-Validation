@@ -8,6 +8,10 @@
   padding-top: 40px;
 }
 
+.container{
+  position: relative;
+}
+
 .userIcon {
   width: 80px;
   height: 80px;
@@ -22,4 +26,20 @@
   color: #fff;
   font-weight: 600;
   font-size: 20px;
+}
+
+.pencil {
+  position: absolute;
+  left: 65px;
+  top: 45px;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: #ad325d;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px;
 }
