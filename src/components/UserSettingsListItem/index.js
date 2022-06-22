@@ -11,11 +11,17 @@ import {
   faClipboardList,
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
+import ChangePassword from "../ChangePassword";
+
 function UserSettingsListItem({ category }) {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen((prev) => !prev);
+  };
+
+  const contentClosehandleClick = () => {
+    setOpen(false);
   };
 
   const icon =
@@ -29,18 +35,24 @@ function UserSettingsListItem({ category }) {
       ? faLock
       : faCircleXmark;
   return (
-    <ListGroup.Item className={styles.listItem} onClick={handleClick}>
-      <div className={styles.iconWrapper}>
-        <div>
-          <FontAwesomeIcon icon={icon} size="2x" />
+    <ListGroup.Item className={styles.wrapper}>
+      <section className={styles.listItem}>
+        <div className={styles.iconWrapper}>
+          <div>
+            <FontAwesomeIcon icon={icon} size="2x" />
+          </div>
+          {category.name}
         </div>
-        {category.name}
-      </div>
 
-      <FontAwesomeIcon
-        style={{ color: "#ad325d", cursor: "pointer" }}
-        icon={open ? faAngleDown : faAngleUp}
-      />
+        <FontAwesomeIcon
+          onClick={handleClick}
+          className={styles.icon}
+          icon={open ? faAngleDown : faAngleUp}
+        />
+      </section>
+      {open && category.icon === "at" && (
+        <ChangePassword contentClosehandleClick={contentClosehandleClick} />
+      )}
     </ListGroup.Item>
   );
 }

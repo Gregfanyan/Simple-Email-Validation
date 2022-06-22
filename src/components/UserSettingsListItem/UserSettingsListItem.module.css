@@ -1,3 +1,8 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .listItem {
   display: flex;
   width: 100%;
@@ -19,6 +24,11 @@
 
 .iconWrapper svg {
   color: #007aad;
+}
+
+.icon {
+  color: #ad325d;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 800px) {
