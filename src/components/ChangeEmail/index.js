@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./ChangeEmail.module.css";
 import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FormModal from "../FormModal";
-function ChangePassword({ contentClosehandleClick }) {
+function ChangeEmail({ contentClosehandleClick }) {
+  const [registeredEmail, setRegisteredEmail] = useState(
+    "grigorfanyan@gmail.com"
+  );
   return (
     <main className={style.main}>
       <div className={style.textWrapper}>
@@ -14,10 +17,10 @@ function ChangePassword({ contentClosehandleClick }) {
         <p>
           Deine aktuelle E-Mail-Adresse:
           <br />
-          <strong>grigorfanyan@gmail.com</strong>
+          <strong>{registeredEmail}</strong>
         </p>
       </div>
-      <FormModal />
+      <FormModal setRegisteredEmail={setRegisteredEmail} />
       <div>
         <FontAwesomeIcon onClick={contentClosehandleClick} icon={faAngleUp} />
       </div>
@@ -25,4 +28,4 @@ function ChangePassword({ contentClosehandleClick }) {
   );
 }
 
-export default ChangePassword;
+export default ChangeEmail;

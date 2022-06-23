@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import style from "./FormModal.module.css";
 
-function FormModal() {
+function FormModal({ setRegisteredEmail }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,42 +24,50 @@ function FormModal() {
       ...prev,
       [name]: value,
     }));
-    validateInput(e);
   };
 
-  const validateInput = (e) => {
-    let { name, value } = e.target;
-    setError((prev) => {
-      const stateObj = { ...prev, [name]: "" };
+  const validateInput = () => {
+    if (input.email === "") {
+      setError({ ...error, email: "Please enter Email" });
+      return false;
+    }
+    if (input.confirmEmail === "") {
+      setError({ ...error, confirmEmail: "Please enter Confrim Email" });
+      return false;
+    }
+    if (input.email !== input.confirmEmail) {
+      setError({
+        ...error,
+        confirmEmail: "Email and Confirm Email does not match.",
+      });
+      return false;
+    }
 
-      switch (name) {
-        case "email":
-          if (!value) {
-            stateObj[name] = "Please enter Email";
-          } else if (input.confirmEmail && value !== input.confirmEmail) {
-            stateObj["confirmEmail"] =
-              "Email and Confirm Email does not match.";
-          } else {
-            stateObj["confirmEmail"] = input.confirmEmail
-              ? ""
-              : error.confirmEmail;
-          }
-          break;
+    return true;
+  };
 
-        case "confirmEmail":
-          if (!value) {
-            stateObj[name] = "Please enter Confirm Email.";
-          } else if (input.email && value !== input.email) {
-            stateObj[name] = "Email and Confirm Email does not match.";
-          }
-          break;
-
-        default:
-          break;
-      }
-
-      return stateObj;
+  const clearInputs = () => {
+    setInput({
+      email: "",
+      confirmEmail: "",
     });
+  };
+
+  const clearErrors = () => {
+    setError({
+      email: "",
+      confirmEmail: "",
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isValid = validateInput();
+    if (isValid) {
+      setRegisteredEmail(input.email);
+      clearInputs();
+      clearErrors();
+    }
   };
 
   return (
@@ -89,8 +97,8 @@ function FormModal() {
                 placeholder="Email-Addresse"
                 autoFocus
                 onChange={onInputChange}
-                onBlur={validateInput}
                 value={input.email}
+                isInvalid={error.email}
               />
               {error.email && <span className={style.err}>{error.email}</span>}
             </Form.Group>
@@ -98,10 +106,10 @@ function FormModal() {
               <Form.Control
                 onChange={onInputChange}
                 value={input.confirmEmail}
-                onBlur={validateInput}
                 type="email"
                 name="confirmEmail"
                 placeholder="Email-Addresse wiederholen"
+                isInvalid={error.confirmEmail}
               />
               {error.confirmEmail && (
                 <span className={style.err}>{error.confirmEmail}</span>
@@ -112,9 +120,8 @@ function FormModal() {
 
         <Modal.Footer className={style.footer}>
           <Button
-            style={{
-              backgroundColor: "#ad325d",
-            }}
+            onClick={handleSubmit}
+            className={style.button}
             variant="primary"
           >
             speichern
