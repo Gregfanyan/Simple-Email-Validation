@@ -32,16 +32,7 @@
   margin-bottom: 40px;
 }
 
-.button:hover {
-  background-color: #680a2b;
-}
-
 @media screen and (min-width: 800px) {
-  .button {
-    width: 35%;
-    font-size: 15px;
-    padding: 5px;
-  }
   .textWrapper {
     width: 90%;
   }

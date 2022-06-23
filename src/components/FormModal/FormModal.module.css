@@ -1,0 +1,37 @@
+.button {
+  width: 90%;
+  background-color: #ad325d !important;
+  border: none;
+  padding: 5px 0;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.button:hover {
+  background-color: #680a2b;
+}
+
+.formFooter {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: #ad325d;
+  flex-direction: column;
+}
+
+.err {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #e64646;
+}
+.success {
+  color: rgb(35, 190, 35);
+}
+@media screen and (min-width: 800px) {
+  .button {
+    width: 35%;
+    font-size: 15px;
+    padding: 5px;
+  }
+}
