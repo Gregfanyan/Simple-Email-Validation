@@ -134,7 +134,7 @@ function FormModal({ setRegisteredEmail }) {
             onClick={handleSubmit}
             className={style.button}
             variant="primary"
-            disabled={!input.email || !input.confirmEmail}
+            // disabled={!input.email || !input.confirmEmail}
           >
             speichern
           </Button>

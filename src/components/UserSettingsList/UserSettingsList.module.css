@@ -13,9 +13,9 @@
     display: grid;
     grid-template-columns: 1fr repeat(10, minmax(auto, 9em)) 1fr;
     padding-top: 70px;
+    border-radius: 0;
   }
   .userSettingsContainer {
-    border-radius: 0;
     grid-column: 4/10;
   }
   .listGroup {
