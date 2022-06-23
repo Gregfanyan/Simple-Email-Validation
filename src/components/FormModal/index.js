@@ -5,9 +5,9 @@ import style from "./FormModal.module.css";
 
 function FormModal({ setRegisteredEmail }) {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
   const changeEmail = "E-Mail-Adresse Ändern";
+  const [isSuccess, setIsSuccess] = useState(false);
   const [input, setInput] = useState({
     email: "",
     confirmEmail: "",
@@ -65,10 +65,21 @@ function FormModal({ setRegisteredEmail }) {
     const isValid = validateInput();
     if (isValid) {
       setRegisteredEmail(input.email);
+      setIsSuccess(true);
       clearInputs();
       clearErrors();
+    } else {
+      setIsSuccess(false);
     }
   };
+
+  const handleClose = () => {
+    setShow(false);
+    setIsSuccess(false);
+    clearErrors();
+    clearInputs();
+  };
+  const handleShow = () => setShow(true);
 
   return (
     <>
@@ -118,14 +129,20 @@ function FormModal({ setRegisteredEmail }) {
           </Form>
         </Modal.Body>
 
-        <Modal.Footer className={style.footer}>
+        <Modal.Footer className={style.formFooter}>
           <Button
             onClick={handleSubmit}
             className={style.button}
             variant="primary"
+            disabled={!input.email || !input.confirmEmail}
           >
             speichern
           </Button>
+          {isSuccess && (
+            <span className={style.success}>
+              Email was updated successfully
+            </span>
+          )}
         </Modal.Footer>
       </Modal>
     </>

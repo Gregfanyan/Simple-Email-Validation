@@ -12,11 +12,12 @@
   background-color: #680a2b;
 }
 
-.footer {
+.formFooter {
   text-align: center;
   display: flex;
   justify-content: center;
   color: #ad325d;
+  flex-direction: column;
 }
 
 .err {
@@ -24,7 +25,9 @@
   font-size: 13px;
   color: #e64646;
 }
-
+.success {
+  color: rgb(35, 190, 35);
+}
 @media screen and (min-width: 800px) {
   .button {
     width: 35%;
