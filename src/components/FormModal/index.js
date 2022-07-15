@@ -27,8 +27,14 @@ function FormModal({ setRegisteredEmail }) {
   };
 
   const validateInput = () => {
+    var regex = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
+
     if (input.email === "") {
       setError({ ...error, email: "Please enter Email" });
+      return false;
+    }
+    if (!regex.test(input.email)) {
+      setError({ ...error, email: "Please enter correct Email" });
       return false;
     }
     if (input.confirmEmail === "") {
