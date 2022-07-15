@@ -1,11 +1,12 @@
-# PME Task
+# Simple email validation
 
 ## Table of contents
-  - [Table of contents](#table-of-contents)
-  - [General info](#general-info)
-  - [Technologies](#technologies)
-  - [Setup](#setup)
-  - [Features](#features)
+
+- [Table of contents](#table-of-contents)
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Features](#features)
 
 ## General info
 
