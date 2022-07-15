@@ -7,7 +7,7 @@ function UserSettingsList() {
   return (
     <section className={styles.wrapper}>
       <div className={styles.userSettingsContainer}>
-        {defaultListData.map((category, i) => (
+        {defaultListData.map((category) => (
           <ListGroup
             key={category.name}
             className={styles.listGroup}
