@@ -46,7 +46,7 @@ function UserSettingsListItem({ category }) {
 
         <FontAwesomeIcon
           className={styles.icon}
-          icon={open ? faAngleDown : faAngleUp}
+          icon={!open ? faAngleDown : faAngleUp}
         />
       </section>
       {open && category.icon === "at" && (
